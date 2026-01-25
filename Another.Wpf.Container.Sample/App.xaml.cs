@@ -3,10 +3,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Windows;
 using WpfSimpleViewManager.Extensions;
-using WpfSimpleViewManager.Test.TestViewModels;
-using WpfSimpleViewManager.Test.TestViews;
+using WpfSimpleViewManager.Sample.SampleViewModels;
+using WpfSimpleViewManager.Sample.SampleViews;
 
-namespace WpfSimpleViewManager.Test
+namespace WpfSimpleViewManager.Sample
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -40,7 +40,7 @@ namespace WpfSimpleViewManager.Test
 
                 services.AddSingletonNavigation<IMainView, MainWindow, MainWindowViewModel>();
 
-                services.AddTransientDialog<TestDialog,TestDialogViewModel>();
+                services.AddTransientDialog<SampleDialog,SampleDialogViewModel>();
 
                 var vm = new CommonViewModel();
                 services.AddTransientNavigation<AView>(vm);

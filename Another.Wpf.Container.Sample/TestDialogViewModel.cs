@@ -3,9 +3,9 @@ using CommunityToolkit.Mvvm.Input;
 using WpfSimpleViewManager.Dialog;
 using WpfSimpleViewManager.Parameter;
 
-namespace WpfSimpleViewManager.Test
+namespace WpfSimpleViewManager.Sample
 {
-    internal partial class TestDialogViewModel : ViewModelBase, IDialogAware
+    internal partial class SampleDialogViewModel : ViewModelBase, IDialogAware
     {
         public string? Title { get; set; }
 

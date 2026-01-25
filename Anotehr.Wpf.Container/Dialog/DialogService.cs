@@ -49,7 +49,7 @@ namespace WpfSimpleViewManager.Dialog
             //Di Container에서 찾은 타입 가져와서 넣어주기
             control.DataContext = vm;
 
-            ContentControl contentControl = FindChild<ContentControl>(dialogBase, "dialogContent") ?? throw new ArgumentNullException("dialogContent를 찾을 수 없음");
+            ContentControl contentControl = FindChild<ContentControl>(dialogBase, "dialogContent") ?? throw new ArgumentNullException("Can't find ContentControl from DialogBase");
 
             contentControl.Content = control;
 
@@ -69,6 +69,7 @@ namespace WpfSimpleViewManager.Dialog
                         dialogResult = (DialogResult)result;
                         dialogAware.OnDialogClosed();
                         dialogBase.Close();
+                        contentControl.Content = null;
                         callback?.Invoke(result);
                         dialogAware.RequestClose -= requestCloseHandler;
                     }

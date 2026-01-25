@@ -13,27 +13,27 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfSimpleViewManager.Test
+namespace WpfSimpleViewManager.Sample
 {
     /// <summary>
-    /// TestDialog.xaml에 대한 상호 작용 논리
+    /// SampleDialog.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class TestDialog : UserControl
+    public partial class SampleDialog : UserControl
     {
-        public TestDialog()
+        public SampleDialog()
         {
             InitializeComponent();
             var a = DataContext;
-            Loaded += TestDialog_Loaded;
-            DataContextChanged += TestDialog_DataContextChanged;
+            Loaded += SampleDialog_Loaded;
+            DataContextChanged += SampleDialog_DataContextChanged;
         }
 
-        private void TestDialog_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void SampleDialog_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             var a = DataContext;
         }
 
-        private void TestDialog_Loaded(object sender, RoutedEventArgs e)
+        private void SampleDialog_Loaded(object sender, RoutedEventArgs e)
         {
             var a = DataContext;
         }

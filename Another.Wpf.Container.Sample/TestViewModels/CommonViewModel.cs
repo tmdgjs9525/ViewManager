@@ -2,7 +2,7 @@
 using WpfSimpleViewManager.Navigate;
 using WpfSimpleViewManager.Parameter;
 
-namespace WpfSimpleViewManager.Test.TestViewModels
+namespace WpfSimpleViewManager.Sample.SampleViewModels
 {
     internal partial class CommonViewModel : ViewModelBase, INavigateAware
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfSimpleViewManager.Test.TestViewModels
+namespace WpfSimpleViewManager.Sample.SampleViewModels
 {
     internal class BViewModel : ViewModelBase
     {

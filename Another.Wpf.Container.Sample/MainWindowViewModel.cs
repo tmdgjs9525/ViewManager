@@ -2,7 +2,7 @@
 using WpfSimpleViewManager.Dialog;
 using WpfSimpleViewManager.Navigate;
 
-namespace WpfSimpleViewManager.Test
+namespace WpfSimpleViewManager.Sample
 {
     internal partial class MainWindowViewModel : ViewModelBase
     {
@@ -28,7 +28,7 @@ namespace WpfSimpleViewManager.Test
             }
 
             _view = !_view;
-            _dialogService.ShowDialog("TestDialog", parameters : new Parameter.Parameters() 
+            _dialogService.ShowDialog("SampleDialog", parameters : new Parameter.Parameters() 
             {
 
             }, callback: result =>

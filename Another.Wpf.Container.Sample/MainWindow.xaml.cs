@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.DependencyInjection;
 using System.Windows;
 
-namespace WpfSimpleViewManager.Test
+namespace WpfSimpleViewManager.Sample
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

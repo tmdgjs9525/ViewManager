@@ -1,7 +1,7 @@
-﻿<Application x:Class="WpfSimpleViewManager.Test.App"
+﻿<Application x:Class="WpfSimpleViewManager.Sample.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:WpfSimpleViewManager.Test"
+             xmlns:local="clr-namespace:WpfSimpleViewManager.Sample"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          
