@@ -1,194 +1,92 @@
-# WpfSimpleViewManager
-
-**WPF MVVM**용 뷰(View) 관리 라이브러리입니다.  
-`Microsoft.Extensions.DependencyInjection` 기반으로 **Region 내비게이션**과 **다이얼로그 서비스**를 간단하게 구성할 수 있습니다.  
-
-Prism을 모방했습니다.
-
-## ✨ 주요 기능
-
-- **Region 기반 내비게이션**: UI의 특정 영역(`Region`)을 지정하여 해당 부분의 콘텐츠만 교체할 수 있습니다.
-- **다이얼로그 관리**: `DialogService`를 통해 간단하게 Modal/Modaless 다이얼로그를 띄울 수 있습니다.
-- **생명 주기 관리**: View와 ViewModel을 `Transient`(일회성) 또는 `Singleton`(단일 인스턴스)으로 등록할 수 있습니다.
-- **유연한 View 등록**: View를 구체 클래스뿐만 아니라 인터페이스로도 등록하여 유연하게 교체할 수 있습니다.
-- **MVVM 친화적**: `INavigateAware`, `IDialogAware` 인터페이스를 통해 ViewModel 간의 안전한 파라미터 전달을 지원합니다.
-
----
-
-## 의존성
-
-- [CommunityToolkit.Mvvm](https://learn.microsoft.com/dotnet/communitytoolkit/mvvm/introduction)  
-- [Microsoft.Extensions.DependencyInjection](https://learn.microsoft.com/dotnet/core/extensions/dependency-injection)  
+# anothereye-viewmanager
 
 
-## 사용 방법
 
-### Di 등록
+## Getting started
 
-services.AddWpfSimpleViewManager()를 통해 서비스를 등록하고, AddSingletonNavigation, AddTransientNavigation, AddSingletonDialog, AddTransientDialog 등의 확장 메서드를 사용하여 View와 ViewModel을 등록합니다.
-> ⚠️ 규약  
-> - **ViewModel**은 `WpfSimpleViewManager.IViewModelBase`를 구현해야 합니다.  
-> - **View**는 `System.Windows.Controls.Control` 파생이어야 합니다.
-```
+To make it easy for you to get started with GitLab, here's a list of recommended next steps.
 
-public static IHostBuilder ConfigureServices(this IHostBuilder hostBuilder)
-{
-    return hostBuilder.ConfigureServices(services =>
-    {
-        services.AddWpfSimpleViewManager();
+Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
 
-        //Navigate
-        services.AddSingletonNavigation<BView, BViewModel>();
-        services.AddTransientNavigation<BView, BViewModel>();
+## Add your files
 
-        //Use Instance
-        var vm = new CommonViewModel();
-        services.AddTransientNavigation<AView>(vm);
-        services.AddSingletonNavigation<BView>(vm);
-
-        //Use Interface
-        services.AddSingletonNavigation<IMainView, MainWindow, MainWindowViewModel>();
-   
-        //Dialog
-        //Dialog의 ViewModel은 IDialogAware를 필수적으로 구현해야 함
-        services.AddTransientDialog<TestDialog,TestDialogViewModel>();
-        services.AddSingletonDialog<TestDialog,TestDialogViewModel>();
-
-    });
-}
-```
-
-### 🗂 Region 등록 (Navi)
-
-XAML에서 `ContentControl` 같은 컨트롤에  
-regionManager:RegionManager.RegionName="MainRegion" 속성을 지정하여 Region을 등록합니다.
+- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
+- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
 
 ```
-<Window
-    x:Class="YourApp.MainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:regionmanager="clr-namespace:WpfSimpleViewManager.Region;assembly=WpfSimpleViewManager">
-
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <!-- MainRegion 등록 -->
-        <ContentControl Grid.Row="0"
-                        regionmanager:RegionManager.RegionName="MainRegion" />
-
-        <Button Grid.Row="1"
-                Height="50"
-                Command="{Binding NavigateCommand}"
-                Content="Go" />
-    </Grid>
-</Window>
+cd existing_repo
+git remote add origin http://192.168.0.67/another-eye/anothereye-viewmanager.git
+git branch -M main
+git push -uf origin main
 ```
 
-### 📌 Use
+## Integrate with your tools
 
-#### 호출하는 곳
+- [ ] [Set up project integrations](http://192.168.0.67/another-eye/anothereye-viewmanager/-/settings/integrations)
 
-- **Navigation**  
-  'INavigationService'를 주입받아  
-  'NavigateTo("RegionName", "ViewName", Parameters)' 메서드를 호출하면 지정한 Region에 View가 교체됩니다.
+## Collaborate with your team
 
-- **Dialogs**  
-  'IDialogService'를 주입받아  
-  'ShowDialog("DialogName", Parameters, callback)' 메서드를 호출하면 다이얼로그를 띄울 수 있습니다.
-```
-private readonly INavigationService _navigationService;
-private readonly IDialogService _dialogService;
+- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
+- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
+- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
+- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
+- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
 
-public MainWindowVIewModel(INavigationService navigationService, IDialogService dialogService)
-{
-     _navigationService = navigationService;
-    _dialogService = dialogService;
-}
+## Test and Deploy
 
-[RelayCommand]
-private void Navigate()
-{
-    _navigationService.NavigateTo("MainRegion", "BView");
+Use the built-in continuous integration in GitLab.
 
-    //With Parameters
-    _navigationService.NavigateTo(RegionNames.MainRegion, ViewNames.MainView, new Parameters()
-    {
-        {"numbers", new List<int>() {1,3,5,67} },
-    });
-}
+- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
+- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
+- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
+- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
+- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
 
-[RelayCommand]
-private void Dialog()
-{
-    // 다이얼로그의 Owner는 현재 활성화중인 Window
-    _dialogService.ShowDialog("TestDialog");
+***
 
-    //With Parameters
-    _dialogService.ShowDialog("TestDialog", new Parameters()
-   {
-     {"Content", "Hello Dialog"},
-   }, callback =>
-   {
-     if(result.Success)
-     {
-       //Do Work
-     }
-     
-     if(result.Parameters.ContainsKey("key"))
-     {
-       var key = result.Parameters.GetValue<int>("Key");
-     }
-   });
-}
-```
-#### 🔄 INavigateAware & IDialogAware
+# Editing this README
 
-**Parameter Handling**  
-ViewModel에서 `INavigateAware` 와 `IDialogAware` 인터페이스를 구현하면,  
-뷰가 열리거나 내비게이션될 때 파라미터를 안전하게 전달받고  
-닫힐 때 관련 로직을 처리할 수 있습니다.
-```
-INavigateAware
-internal partial class CommonViewModel : ViewModelBase, INavigateAware
-{
-    [ObservableProperty]
-    private int _count = 0;
+When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
 
-    public void NavigateTo(Parameters parameters)
-    {
-        Count++;
-    }
-}
-```
-```
-internal partial class TestDialogViewModel : ViewModelBase, IDialogAware
-{
-    public string? Title { get; set; }
+## Suggestions for a good README
+Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
 
-    public event Action<IDialogResult?>? RequestClose;
+## Name
+Choose a self-explaining name for your project.
 
-    public bool CanCloseDialog()
-    {
-        return true;   
-    }
+## Description
+Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
 
-    public void OnDialogClosed()
-    {
-    }
+## Badges
+On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
 
-    public void OnDialogOpened(Parameters parameters)
-    {
-    }
+## Visuals
+Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
 
-    [RelayCommand]
-    private void Exit()
-    {
-         RequestClose?.Invoke(new DialogResult { Success = true, Parameters = new Parameters() });
-    }
-}
+## Installation
+Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
 
-```
+## Usage
+Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+
+## Support
+Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+
+## Roadmap
+If you have ideas for releases in the future, it is a good idea to list them in the README.
+
+## Contributing
+State if you are open to contributions and what your requirements are for accepting them.
+
+For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+
+You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+
+## Authors and acknowledgment
+Show your appreciation to those who have contributed to the project.
+
+## License
+For open source projects, say how it is licensed.
+
+## Project status
+If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
