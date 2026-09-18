@@ -2,7 +2,7 @@ using Wpf.Container.Extensions;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using System.Runtime.InteropServices;
 using Wpf.Container.Extensions;
-using EyeContainer.Core.Interfaces;
+using Container.Core.Interfaces;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;

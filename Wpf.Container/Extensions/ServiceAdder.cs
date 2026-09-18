@@ -2,8 +2,8 @@ using Wpf.Container.Region;
 using Eye.Base.Dialog;
 using Eye.Base.Extensions;
 using Eye.Base.Navigate;
+using Container.Core.Interfaces;
 using EyeContainer.Core.Interfaces;
-using EyeEyeContainer.Core.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Wpf.Container.Extensions

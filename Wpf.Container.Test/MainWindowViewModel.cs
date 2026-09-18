@@ -1,5 +1,5 @@
+using Container.Core.Interfaces;
 using EyeContainer.Core.Interfaces;
-using EyeEyeContainer.Core.Interfaces;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 

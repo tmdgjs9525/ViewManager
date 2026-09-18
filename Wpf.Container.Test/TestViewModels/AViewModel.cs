@@ -1,4 +1,4 @@
-using EyeContainer.Core.Interfaces;
+using Container.Core.Interfaces;
 
 namespace Wpf.Container.Test.TestViewModels
 {

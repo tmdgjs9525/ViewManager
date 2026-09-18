@@ -1,5 +1,5 @@
-using EyeContainer.Core.Interfaces;
-using EyeContainer.Core.Parameter;
+using Container.Core.Interfaces;
+using Container.Core.Parameter;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;

@@ -1,5 +1,5 @@
-using EyeContainer.Core.Parameter;
-using EyeEyeContainer.Core.Interfaces;
+using Container.Core.Parameter;
+using EyeContainer.Core.Interfaces;
 
 namespace Avalonia.Container.Test.ViewModels
 {

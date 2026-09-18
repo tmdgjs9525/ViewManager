@@ -1,6 +1,6 @@
+using Container.Core.Interfaces;
+using Container.Core.Parameter;
 using EyeContainer.Core.Interfaces;
-using EyeContainer.Core.Parameter;
-using EyeEyeContainer.Core.Interfaces;
 using CommunityToolkit.Mvvm.Input;
 using System;
 

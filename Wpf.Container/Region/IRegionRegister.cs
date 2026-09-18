@@ -1,4 +1,4 @@
-using EyeContainer.Core.Interfaces;
+using Container.Core.Interfaces;
 using System.Windows.Controls;
 
 namespace Wpf.Container.Region

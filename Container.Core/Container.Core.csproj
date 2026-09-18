@@ -9,19 +9,10 @@
 	  <Authors>Mario</Authors>
 	  <Company>Real</Company>
 	  <Description>DialogService, NavigationService</Description>
-	  <PackageIcon>자산 3@4x.png</PackageIcon>
-	  <PackageTags>7.0;8.0;9.0</PackageTags>
+	  <PackageTags>7.0;8.0;9.0;10.0</PackageTags>
 	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	  <Version>1.2.2</Version>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Resource Include="자산 3@4x.png">
-      <PackagePath>\</PackagePath>
-      <Pack>True</Pack>
-    </Resource>
-  </ItemGroup>
-
   <ItemGroup>
     <Compile Update="Interfaces\IViewModelBase.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

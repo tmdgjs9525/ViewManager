@@ -1,5 +1,5 @@
 using Eye.Base.Navigate;
-using EyeContainer.Core.Interfaces;
+using Container.Core.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Controls;
 

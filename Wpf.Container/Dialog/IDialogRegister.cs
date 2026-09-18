@@ -1,5 +1,5 @@
-using EyeContainer.Core.Interfaces;
-using EyeContainer.Core.Parameter;
+using Container.Core.Interfaces;
+using Container.Core.Parameter;
 using System.Windows.Controls;
 
 namespace Eye.Base.Dialog

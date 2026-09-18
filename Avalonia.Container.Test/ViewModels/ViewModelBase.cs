@@ -1,4 +1,4 @@
-using EyeContainer.Core.Interfaces;
+using Container.Core.Interfaces;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Avalonia.Container.Test.ViewModels
