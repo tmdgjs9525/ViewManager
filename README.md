@@ -1,4 +1,4 @@
-# anothereye-viewmanager
+# viewmanager
 
 
 
